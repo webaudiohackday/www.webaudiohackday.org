@@ -2,7 +2,7 @@
 title: webaudiohackday.org
 email: jan@krutisch.de
 description: > # this means to ignore newlines until "baseurl:"
-  We're a group of web audio enthusiasts who try to organise hackdays revolving
+  A group of web audio enthusiasts running hackdays revolving
   around the web audio APIs in modern browsers.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.webaudiohackday.org" # the base hostname & protocol for your site
@@ -12,5 +12,7 @@ github_username:  webaudiohackday
 # Build settings
 markdown: kramdown
 collections:
-  - upcoming_hackdays
-  - past_hackdays
+  upcoming_hackdays:
+    output: true
+  past_hackdays:
+    output: true

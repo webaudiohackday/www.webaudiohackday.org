@@ -6,40 +6,52 @@ layout: default
 
   <h1 class="page-heading">Upcoming Events</h1>
 
-  <ul class="post-list">
+  <ul class="event-list">
     {% for event in site.upcoming_hackdays %}
       <li>
-        <h2><a href="{{ event.web_url }}">{{ event.title }}</a></h2>
+        <span class="post-meta">{{ event.date | date: "%b %-d, %Y" }}</span>
+        <h2>
+          {% if event.web_url %}
+            <a href="{{ event.web_url }}">{{ event.title }}</a>
+          {% else %}
+            <a href="{{ event.url }}">{{ event.title }}</a>
+          {% endif %}
+        </h2>
       </li>
     {% endfor %}
   </ul>
-
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
+  <h1 class="page-heading">Past Events</h1>
+  <ul class="event-list">
+    {% for event in site.past_hackdays %}
       <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
+        <span class="post-meta">{{ event.date | date: "%b %-d, %Y" }}</span>
         <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          {% if event.web_url %}
+            <a href="{{ event.web_url }}">{{ event.title }}</a>
+          {% else %}
+            <a href="{{ event.url }}">{{ event.title }}</a>
+          {% endif %}
         </h2>
       </li>
     {% endfor %}
   </ul>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  <section class="blog-posts">
+    <h1 class="page-heading">Blogposts</h1>
 
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li>
+          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-  <h1 class="page-heading">Past Events</h1>
-  <ul class="post-list">
-    {% for event in site.past_hackdays %}
-      <li>
-        <h2><a href="{{ event.web_url }}">{{ event.title }}</a></h2>
-      </li>
-    {% endfor %}
-  </ul>
+          <h2>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          </h2>
+        </li>
+      {% endfor %}
+    </ul>
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  </section>
 
 
 </div>
